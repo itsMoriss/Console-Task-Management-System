@@ -63,47 +63,6 @@ namespace Task_Console.Views
             }
         }
 
-
-        // public static async Task<Admin> CreateInitialAdminView()
-        // {
-        // // Console.WriteLine("Calling CreateInitialAdminView");
-
-        //     if (isInitialAdminCreated)
-        //     {
-        //         // Console.WriteLine("Initial Admin Account Setup - Step 1");
-        //         Console.WriteLine("Initial admin account has already been set up.");
-        //     }
-        //     else
-        //     {
-        //         Console.WriteLine("Initial Admin Account Setup");
-        //         Console.WriteLine("Enter admin username:");
-        //         initialAdminUsername = GetUserInput();
-        //         Console.WriteLine("Enter admin password:");
-        //         initialAdminPassword = GetUserInput();
-        //         isInitialAdminCreated = true;
-        //         loginAdmin = new Admin { Username = initialAdminUsername, Password = initialAdminPassword };
-        //     }
-
-        //     Console.WriteLine("Enter admin username:");
-        //     string username = GetUserInput();
-        //     Console.WriteLine("Enter admin password:");
-        //     string password = GetUserInput();
-
-        //     if (username == initialAdminUsername && password == initialAdminPassword)
-        //     {
-        //         Console.WriteLine($"Username: {username}");
-        //         Console.WriteLine($"Password: {password}");
-        //         Console.WriteLine($"Admin: {username} - {password}");
-            
-        //         return new Admin { Username = username, Password = password };
-        //     }
-        //     else
-        //     {
-        //         ShowMessage("Invalid input. Please try again.");
-        //         return await CreateInitialAdminView();
-        //     }
-        // }
-
         public static async Task<string> ShowAdminMenu()
         {
             Console.WriteLine($"{red}Admin Menu{resetColor}");
@@ -114,7 +73,7 @@ namespace Task_Console.Views
             Console.WriteLine($"{blue}5.{magenta} Update Task{resetColor}");
             Console.WriteLine($"{blue}6.{magenta} Delete Task{resetColor}");
             Console.WriteLine($"{blue}7.{magenta} Logout{resetColor}");
-            Console.WriteLine($"{red}Enter your choice:{resetColor}");
+            Console.WriteLine($"{yellow}Enter your choice:{resetColor}");
             
             string userInput = GetUserInput();
             

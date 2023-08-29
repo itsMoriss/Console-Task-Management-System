@@ -109,8 +109,8 @@ namespace Task_Console.Views
             Console.WriteLine("Welcome to the Task Manager");
             Console.WriteLine($"{blue}1{green} - Show Projects{resetColor}");
             Console.WriteLine($"{blue}2{green} - Show single Project{resetColor}");
-            Console.WriteLine($"{blue}3{green} - Show Undone {resetColor}");
-            Console.WriteLine($"{blue}4{green} - Show single {resetColor}");
+            Console.WriteLine($"{blue}3{green} - Show Undone Tasks {resetColor}");
+            Console.WriteLine($"{blue}4{green} - Show single Task {resetColor}");
             Console.WriteLine($"{blue}5{green} - Logout{resetColor}");
             string userInput = AppView.GetUserInput();
             if (int.TryParse(userInput, out int parsedInput) && Utility.ValidateRange(parsedInput, 1, 5))

@@ -11,6 +11,15 @@ namespace Task_Console.Controllers
 {
     public class AdminController
     {
+        private static string white = "\u001b[37m";
+        private static string blue = "\u001b[34m";
+        private static string green = "\u001b[32m";
+        private static string yellow = "\u001b[33m";
+        private static string magenta = "\u001b[35m";
+        private static string red = "\u001b[31m";
+        private static string resetColor = "\u001b[0m";
+        private static string lightBlue = "\u001b[36m";
+        private static string orange = "\u001b[38;5;208m";
         private static readonly AdminService _adminService = new AdminService();
         private static ProjectService _projectService;
         private static readonly TaskService _taskService = new TaskService();
@@ -32,7 +41,7 @@ namespace Task_Console.Controllers
                 await ExitApp();
                 break;
                 default:
-                AppView.ShowMessage("Invalid option");
+                AppView.ShowMessage($"{red}Invalid option{resetColor}");
                 await AppView.InitApp();
                 break;
             }
@@ -52,13 +61,13 @@ namespace Task_Console.Controllers
 
             if (_adminService.RegisterAdmin(newAdmin))
             {
-                AppView.ShowMessage("Admin registered successfully!");
+                AppView.ShowMessage($"{green}Admin registered successfully!{resetColor}");
                 loginAdmin = newAdmin; // Automatically log in the registered admin
                 await ShowAdminMenuGetOption(loginAdmin.Id);
             }
             else
             {
-                AppView.ShowMessage("Error registering admin.");
+                AppView.ShowMessage($"{red}Error registering admin.{resetColor}");
             }
         }
 
@@ -78,7 +87,7 @@ namespace Task_Console.Controllers
             }
             else
             {
-                AppView.ShowMessage("Invalid username or password");
+                AppView.ShowMessage($"{red}Invalid username or password{resetColor}");
                 await AppView.InitApp();
             }
         }
@@ -116,7 +125,7 @@ namespace Task_Console.Controllers
                     await ExitApp();
                     break;
                 default:
-                    AppView.ShowMessage("Invalid option. Please try again.");
+                    AppView.ShowMessage($"{red}Invalid option. Please try again.{resetColor}");
                     await ShowAdminMenuGetOption(adminId);
                     break;
             }
@@ -135,11 +144,11 @@ namespace Task_Console.Controllers
 
             if (_adminService.CreateProject(project))
             {
-                AppView.ShowMessage("Project created successfully!");
+                AppView.ShowMessage($"{white}Project created successfully!{resetColor}");
             }
             else
             {
-                AppView.ShowMessage("Error creating project.");
+                AppView.ShowMessage($"{red}Error creating project.{resetColor}");
             }
 
             await ShowAdminMenuGetOption(adminId);
@@ -150,7 +159,7 @@ namespace Task_Console.Controllers
             List<Project> projects = _projectService.GetAllProjects();
             if (projects.Count == 0)
             {
-                AppView.ShowMessage("No projects available to update.");
+                AppView.ShowMessage($"{red}No projects available to update.{resetColor}");
                 return;
             }
 
@@ -163,11 +172,11 @@ namespace Task_Console.Controllers
                 selectedProject.Name = newName;
                 if (_projectService.UpdateProject(selectedProject))
                 {
-                    AppView.ShowMessage("Project updated successfully!");
+                    AppView.ShowMessage($"{white}Project updated successfully!{resetColor}");
                 }
                 else
                 {
-                    AppView.ShowMessage("Error updating project.");
+                    AppView.ShowMessage($"{red}Error updating project.{resetColor}");
                 }
             }
         }
@@ -177,7 +186,7 @@ namespace Task_Console.Controllers
             List<Project> projects = _projectService.GetAllProjects();
             if (projects.Count == 0)
             {
-                AppView.ShowMessage("No projects available to delete.");
+                AppView.ShowMessage($"{red}No projects available to delete.{resetColor}");
                 return;
             }
 
@@ -186,11 +195,11 @@ namespace Task_Console.Controllers
             {
                 if (_projectService.DeleteProject(selectedProject.Id, adminId))
                 {
-                    AppView.ShowMessage("Project deleted successfully!");
+                    AppView.ShowMessage($"{red}Project deleted successfully!{resetColor}");
                 }
                 else
                 {
-                    AppView.ShowMessage("Error deleting project.");
+                    AppView.ShowMessage($"{orange}Error deleting project.{resetColor}");
                 }
             }
         }
@@ -202,7 +211,7 @@ namespace Task_Console.Controllers
 
             if (projects.Count == 0)
             {
-                AppView.ShowMessage("No projects available to create task under.");
+                AppView.ShowMessage($"{red}No projects available to create task under.{resetColor}");
                 return;
             }
 
@@ -226,16 +235,16 @@ namespace Task_Console.Controllers
 
                 if (_projectService.CreateTask(projectId, newTask))
                 {
-                    AppView.ShowMessage("Task created successfully!");
+                    AppView.ShowMessage($"{orange}Task created successfully!{resetColor}");
                 }
                 else
                 {
-                    AppView.ShowMessage("Error creating task.");
+                    AppView.ShowMessage($"{red}Error creating task.{resetColor}");
                 }
             }
             else
             {
-                AppView.ShowMessage("Invalid project selected.");
+                AppView.ShowMessage($"{red}Invalid project selected.{resetColor}");
             }
         }
 
@@ -244,7 +253,7 @@ namespace Task_Console.Controllers
             List<ProjectTask> tasks = _taskService.GetAllTasks();
             if (tasks.Count == 0)
             {
-                AppView.ShowMessage("No tasks available to update.");
+                AppView.ShowMessage($"{red}No tasks available to update.{resetColor}");
                 return;
             }
 
@@ -263,11 +272,11 @@ namespace Task_Console.Controllers
         
                 if (_taskService.UpdateTask(selectedTask))
                 {
-                    AppView.ShowMessage("Task updated successfully!");
+                    AppView.ShowMessage($"{orange}Task updated successfully!{resetColor}");
                 }
                 else
                 {
-                    AppView.ShowMessage("Error updating task.");
+                    AppView.ShowMessage($"{red}Error updating task.{resetColor}");
                 }
             }
         }
@@ -277,7 +286,7 @@ namespace Task_Console.Controllers
             List<ProjectTask> tasks = _taskService.GetAllTasks();
             if (tasks.Count == 0)
             {
-                AppView.ShowMessage("No tasks available to delete.");
+                AppView.ShowMessage($"{red}No tasks available to delete.{resetColor}");
                 return;
             }
 
@@ -286,18 +295,18 @@ namespace Task_Console.Controllers
             {
                 if (_taskService.DeleteTask(selectedTask.Id))
                 {
-                    AppView.ShowMessage("Task deleted successfully!");
+                    AppView.ShowMessage($"{red}Task deleted successfully!{resetColor}");
                 }
                 else
                 {
-                    AppView.ShowMessage("Error deleting task.");
+                    AppView.ShowMessage($"{orange}Error deleting task.{resetColor}");
                 }
             }
         }
 
         public static async Task ExitApp()
         {
-            AppView.ShowMessage("Thank you for using our app");
+            AppView.ShowMessage($"{magenta}Thank you for using our app{resetColor}");
             Environment.Exit(0);
         }
     }
