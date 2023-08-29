@@ -3476,11 +3476,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Administrator\\Desktop\\Task-Management-System-Console\\Task_Console\\Task_Console.csproj",
+      "projectUniqueName": "c:\\Users\\Administrator\\Desktop\\The Jitu Repo\\Task-Management-System-console\\Task_Console\\Task_Console.csproj",
       "projectName": "Task_Console",
-      "projectPath": "c:\\Users\\Administrator\\Desktop\\Task-Management-System-Console\\Task_Console\\Task_Console.csproj",
+      "projectPath": "c:\\Users\\Administrator\\Desktop\\The Jitu Repo\\Task-Management-System-console\\Task_Console\\Task_Console.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Administrator\\Desktop\\Task-Management-System-Console\\Task_Console\\obj\\",
+      "outputPath": "c:\\Users\\Administrator\\Desktop\\The Jitu Repo\\Task-Management-System-console\\Task_Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
